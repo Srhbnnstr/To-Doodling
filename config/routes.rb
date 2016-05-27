@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get "/welcome", to: "welcome#index"
 
-  get "/login", to: "sessions#new"
+  get "/login", to: "sessions#new", as: "new_session"
   post "/sessions", to: "sessions#create"
   get "/logout", to: "sessions#destroy"
   resources :doodles
