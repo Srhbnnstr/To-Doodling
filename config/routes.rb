@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: "welcome#index"
 
-  get "/", to: "welcome#index"
+  get "/welcome", to: "welcome#index"
 
   get "/login", to: "sessions#new"
   post "/sessions", to: "sessions#create"
