@@ -41,4 +41,8 @@ class UsersController < ApplicationController
     @user.destroy
     redirect_to root_path
   end
+
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :email, :location, :password, :photo)
+  end
 end
