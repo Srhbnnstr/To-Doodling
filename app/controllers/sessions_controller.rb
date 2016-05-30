@@ -6,7 +6,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.confirm(user_params)
+    @user = User.confirm(user_params) || User.from_omniauth(env["omniauth.auth"])
+    session[:user_id] = @user.id
     if @user
       login(@user)
       flash[:notice] = "Welcome!"

@@ -1,29 +1,27 @@
 class TodosController < ApplicationController
+  before_action :todo_params, only: [:update, :create]
   def index
+    @list = List.find_by_id(params[:list_id])
     @todos = Todo.all
-  end
-  
-  def show
-    @todo = Todo.find_by(params[:id])
   end
 
   def new
-    @list = List.find_by_id(params[:list_id])
     @todo = Todo.new
+    @list = List.find_by_id(params[:list_id])
+    render :new
   end
 
   def create
     @todo = Todo.new(todo_params)
-    @list = List.find(params[:list_id])
+    @list = List.find_by(params[:list_id])
     @todo.save
-    if @list.todos.push(@todo)
-      current_user.list.todo.push(@todo)
+      if @list.todos.push(@todo)
       redirect_to list_path(@list)
-    else
+      else
       @todo.destroy
-        flash[:error] = "Something went wrong, please try again"
-        redirect_to new_todo_path(@todo)
-    end
+      flash[:error] = "please try again"
+      redirect_to new_todo_path(@list)
+      end
   end
 
   def edit

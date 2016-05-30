@@ -1,0 +1,4 @@
+<h1>Uncompleted Tasks</h1>
+<%= @todos.each do |t| %>
+<p><%= link_to "#{t.title}", list_path(t)%></p>
+<% end %>

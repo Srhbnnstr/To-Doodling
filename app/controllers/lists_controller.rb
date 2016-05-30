@@ -2,11 +2,12 @@ class ListsController < ApplicationController
   def index
     @list = List.all.order(created_at: :desc)
     @user = User.find_by_id(params[:id])
+    render :index
   end
 
   def show
     @list = List.find_by_id(params[:id])
-    @todos = @list.todos.sort_by(&:due_date)
+    @todos = @list.todos
   end
 
   def new
@@ -16,7 +17,7 @@ class ListsController < ApplicationController
   def create
     @list = List.new(list_params)
     @list.user_id = @current_user
-
+    @user = User.find_by_id(params[:id])
     if @list.save
       redirect_to @list
     else

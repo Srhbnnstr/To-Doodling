@@ -6,9 +6,10 @@
       <%= image_tag @user.photo, class: "img-responsive img-circle", size: "340x340"%>
       <hr>
       <%= button_to "Edit Profile", edit_user_path, :method => "get", class: "btn btn-lg btn-primary" %>
+      <%= button_to "My Lists", lists_path, :method => "get", class: "btn btn-lg btn-primary" %>
     </div>
     <div class="col-md-8">
-        <%= month_calendar todos: @todos do |date, todos| %>
+        <%= month_calendar todos: Todo.all do |date, todos| %>
           <%= date %>
 
           <% todos.each do |todo| %>

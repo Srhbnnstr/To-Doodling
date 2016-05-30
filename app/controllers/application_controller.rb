@@ -13,4 +13,10 @@ class ApplicationController < ActionController::Base
   user_timezone = ActiveSupport::TimeZone[utc_offset]
   Time.zone = user_timezone if user_timezone
   end
+
+  private
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+  helper_method :current_user
 end

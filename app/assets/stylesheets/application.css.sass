@@ -13,20 +13,55 @@
  *= require_tree .
  *= require_self
  *= require simple_calendar
+ *= require bootstrap-datepicker
  */
 @import "bootstrap-sprockets"
 @import "bootstrap"
 
-
-$primary-color: #593D81
-$primary-color-2: #D18C7E
-$font-color-1: #fff
+$small: "(max-width: 690px)"
+$tiny: "(max-width: 650px)"
+$tinier: "(max-width: 540px)"
+$mini: "(max-width: 460px)"
 
 body
-  background-color: $primary-color
+  background-image: url('notebook.png') no-repeat center center
+  background-size: cover
 
 .simple-calendar
   background-color: #fff
   max-width: 800px
   height: auto
   margin-top: 30px
+
+h1
+  font-family: 'Pacifico', cursive
+  font-size: 120px
+  width: 100%
+  margin-left: 20px
+  height: auto
+  margin-top: 100px
+  @media #{$small}
+    text-align: left
+    font-size: 100px
+    margin-left: 0px
+  @media #{$tiny}
+    font-size: 98px
+  @media #{$tinier}
+    font-size: 82px
+  @media #{$mini}
+    font-size: 69px
+
+  .img-responsive
+    display: inline-block
+    float: right
+    position: absolute
+    width: 100px
+    height: 100px
+    margin-bottom: 80px
+    @media #{$small}
+      display: inline-block
+      float: right
+      width: 10%
+      height: auto
+      padding-bottom: 80px
+      margin: auto

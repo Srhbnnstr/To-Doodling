@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
 //= require json2.js
 //= require raphael.js
 //= require raphael.sketchpad.js
+//= require bootstrap-datepicker

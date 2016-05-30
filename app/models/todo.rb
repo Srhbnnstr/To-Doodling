@@ -1,5 +1,6 @@
 class Todo < ActiveRecord::Base
   belongs_to :list
-  extend SimpleCalendar
+  include SimpleCalendar
+  
 
 end

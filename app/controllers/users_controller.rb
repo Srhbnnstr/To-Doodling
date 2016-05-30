@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.photo == ""
-      @user.photo = " USER PHOTO HERE "
+      @user.photo = " "
     end
     @user.save
     login(@user)
