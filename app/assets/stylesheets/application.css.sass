@@ -18,10 +18,11 @@
 @import "bootstrap-sprockets"
 @import "bootstrap"
 
-$small: "(max-width: 690px)"
-$tiny: "(max-width: 650px)"
-$tinier: "(max-width: 540px)"
-$mini: "(max-width: 460px)"
+$small: "(max-width: 780px)"
+$tiny: "(max-width: 655px)"
+$tinier: "(max-width: 610px)"
+$mini: "(max-width: 545px)"
+$xsmall: "(max-width: 435px)"
 
 body
   background-image: url('notebook.png') no-repeat center center
@@ -42,14 +43,16 @@ h1
   margin-top: 100px
   @media #{$small}
     text-align: left
-    font-size: 100px
+    font-size: 110px
     margin-left: 0px
   @media #{$tiny}
     font-size: 98px
   @media #{$tinier}
-    font-size: 82px
+    font-size: 88px
   @media #{$mini}
-    font-size: 69px
+    font-size: 70px
+  @media #{$xsmall}
+    font-size: 55px
 
   .img-responsive
     display: inline-block
