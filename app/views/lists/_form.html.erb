@@ -1,0 +1,5 @@
+<%= simple_form_for @list do |f| %>
+  <%= f.text :list_title, placeholder: "List Title" %><br>
+  <br><%= select_tag(:time_frame, options_for_select([[:prompt=>'please select'],['short-term'], ['long-term']]))%>
+  <%= f.submit "submit" %>
+<% end %>

@@ -1,25 +1,17 @@
   <div class="header">
-    <div class="col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-1 col-lg-8 col-lg-offset-1.5" style="padding-left:0px">
+    <div class="col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-1 col-lg-8 col-lg-offset-1" style="padding-left:0px">
       <div class="container-fluid">
       <h1>To-Doodling<%= image_tag("pencil-gif.gif", class: "img-responsive") %></h1>
       </div>
     </div>
   </div>
-    <br>
-    <div class="col-sm-8 col-md-6 col-lg-6 col-lg-offset-1">
-      <div class="row"
-    <% if current_user %>
-      <% else %>
-        <%= button_to "Sign Up", new_user_path, :method => "get", class: "btn btn-lg btn-primary" %>
-        <%= button_to "Login", new_session_path, :method => "get", class: "btn btn-lg btn-success" %>
-        <div id="user-widget">
+    <hr>
+  <div class="col-xs-offset-2 col-sm-10 col-sm-offset-2 col-md-6 col-md-offset-2 col-lg-8 col-lg-offset-2">
         <% if current_user %>
           Welcome <strong><%= current_user.name %></strong>!
           <%= link_to "Sign out", signout_path, id: "sign_out" %>
         <% else %>
           <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
         <% end %>
-      <% end %>
-        </div>
-      </div>
-    </div>
+  </div>
+  <hr>

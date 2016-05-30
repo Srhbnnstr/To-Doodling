@@ -18,6 +18,13 @@
 @import "bootstrap-sprockets"
 @import "bootstrap"
 
+$primary-color: #43C2A9
+$secondary-color: #B470EC
+$accent: #FFF958
+$salmon: #FF7A70
+$font1: #3a3a3a
+
+
 $small: "(max-width: 780px)"
 $tiny: "(max-width: 655px)"
 $tinier: "(max-width: 610px)"
@@ -41,10 +48,12 @@ h1
   margin-left: 20px
   height: auto
   margin-top: 100px
+  margin-bottom: 30px
   @media #{$small}
     text-align: left
     font-size: 110px
     margin-left: 0px
+    margin-bottom: 0px
   @media #{$tiny}
     font-size: 98px
   @media #{$tinier}
@@ -54,17 +63,52 @@ h1
   @media #{$xsmall}
     font-size: 55px
 
-  .img-responsive
+.img-responsive
+  display: inline-block
+  float: right
+  position: absolute
+  width: 100px
+  height: 100px
+  margin-bottom: 80px
+  @media #{$small}
     display: inline-block
     float: right
-    position: absolute
-    width: 100px
-    height: 100px
-    margin-bottom: 80px
-    @media #{$small}
-      display: inline-block
-      float: right
-      width: 10%
-      height: auto
-      padding-bottom: 80px
-      margin: auto
+    width: 10%
+    height: auto
+    padding-bottom: 80px
+    margin: auto
+
+.simple_form
+  float: left
+  text-align: center
+  width: 400px
+  height: auto
+  display: block
+  border: 2px solid $font1
+  border-radius: 25px
+  padding: 20px
+  margin-top: 40px
+  background-color: $salmon
+  color: $font1
+  @media #{$small}
+    width: 80%
+    height: auto
+
+.simple_form .input-box
+  margin-bottom: 10px
+
+.simple_form input
+  margin-bottom: 10px
+  margin: 2px 10px
+  width: 180px
+
+.simple_form input.button
+  margin-top: 30px
+  color: #5a5a5a
+  font-weight: bolder
+  border-radius: 50px
+
+.simple_form label
+  margin-top: 10px
+  display: block
+  padding-right: 30px

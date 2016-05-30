@@ -156,6 +156,9 @@ GEM
       rdoc (~> 4.0)
     simple_calendar (2.1.4)
       rails (>= 3.0)
+    simple_form (3.2.1)
+      actionpack (> 4, < 5.1)
+      activemodel (> 4, < 5.1)
     spring (1.7.1)
     sprockets (3.6.0)
       concurrent-ruby (~> 1.0)
@@ -201,6 +204,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   simple_calendar (~> 2.0)
+  simple_form
   spring
   therubyracer
   turbolinks
