@@ -21,7 +21,7 @@
           Welcome <strong><%= current_user.name %></strong>!
           <%= link_to "Sign out", signout_path, id: "sign_out" %>
         <% else %>
-        <span><button type="button" class="btn btn-warning" style="background-color:#FF7A70">Sign Up</button><button type="button" class="btn btn-info" style="background-color:#43C2A9">Login</button> <h4> or </h4><div class="fb-login-button" data-max-rows="1" data-size="icon" data-show-faces="false" data-auto-logout-link="false"></div> Log in with Facebook</div></span>
+        <span><button type="button" class="btn btn-primary">Sign Up</button><button type="button" class="btn btn-success">Login</button> <h4> or </h4><div class="fb-login-button" data-max-rows="1" data-size="icon" data-show-faces="false" data-auto-logout-link="false"></div> Log in with Facebook</div></span>
         <% end %>
   </div>
   <hr>
