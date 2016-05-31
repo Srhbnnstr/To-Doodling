@@ -2,7 +2,8 @@
 <script type="text/javascript" src="http://gabelerner.github.io/canvg/StackBlur.js"></script>
 <script type="text/javascript" src="http://gabelerner.github.io/canvg/canvg.js"></script>
 
-
+<div class="container-fluid" id="canvaswrapper">
+  <h3>Choose a color from the palette and doodle something!</h3>
 <div id="canvaswrapper">
     <div id="canvascolours">
         <div data-colour="black"></div>
@@ -35,7 +36,7 @@ var canvas = document.getElementById('canvas'),
     paper = new Raphael(canvas, 500, 700),
     colour = 'black',
     mousedown = false,
-    width = 1,
+    width = 9,
     lastX, lastY, path, pathString;
 
 $(canvas).mousedown(function (e) {

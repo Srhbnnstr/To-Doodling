@@ -11,6 +11,9 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bootstrap-datepicker-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
+#Carrierwave
+gem 'carrierwave'
+gem "mini_magick"
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes

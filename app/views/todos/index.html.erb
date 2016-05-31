@@ -1,4 +1,12 @@
-<h1>Uncompleted Tasks</h1>
-<%= @todos.each do |t| %>
-<p><%= link_to "#{t.title}", list_path(t)%></p>
+<div class="col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-1 col-lg-8 col-lg-offset-1" style="padding-left:0px">
+  <div class="container-fluid">
+    <h1>Incomplete Tasks<%= image_tag("pencil-gif.gif", class: "img-responsive") %></h1>
+  </div>
+</div>
+<div class="col-xs-3">
+  <div class="row">
+    <%= @todos.each do |t| %>
+    <p><%= link_to "#{t.title}", list_path(t)%></p>
+  </div>
+</div>
 <% end %>
