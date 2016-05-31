@@ -1,23 +1,26 @@
 class ListsController < ApplicationController
   def index
-    @list = List.all.order(created_at: :desc)
-    @user = User.find_by_id(params[:id])
+    @user = current_user
+    @lists = @user.lists.order(created_at: :desc)
+
     render :index
   end
 
   def show
     @list = List.find_by_id(params[:id])
+    @user = current_user
     @todos = @list.todos
+    render :show
   end
 
   def new
     @list = List.new
+    @user = current_user
   end
 
   def create
     @list = List.new(list_params)
-    @list.user_id = @current_user
-    @user = User.find_by_id(params[:id])
+    @list.user = current_user
     if @list.save
       redirect_to @list
     else
@@ -27,7 +30,7 @@ class ListsController < ApplicationController
 
   def edit
     @list = List.find_by_id(params[:id])
-    @user = User.find_by_id(params[:id])
+    @user = current_user
   end
 
   def update

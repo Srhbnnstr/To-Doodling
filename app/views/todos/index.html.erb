@@ -3,10 +3,10 @@
     <h1>Incomplete Tasks<%= image_tag("pencil-gif.gif", class: "img-responsive") %></h1>
   </div>
 </div>
-<div class="col-xs-3">
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
   <div class="row">
-    <%= @todos.each do |t| %>
-    <p><%= link_to "#{t.title}", list_path(t)%></p>
+    <% current_user.todos.each do |todo| %>
+    <p><%= link_to @todo, list_path(t)%></p>
   </div>
 </div>
 <% end %>

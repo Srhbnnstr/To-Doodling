@@ -1,7 +1,7 @@
-<%= simple_form_for @todo do |f| %>
-  <%= f.text_field :title, placeholder: "Task"%>
-  <%= f.date :date_due, class: "datepicker" %>
-  <%= f.time :time_due, placeholder: "Sarts at"%>
+<%= simple_form_for @todo, url: list_todos_path do |f| %>
+  <h5><strong>Task</strong></h5><%= f.text_field :title, placeholder: "Task" %>
+  <h5><strong>Date Due</strong></h5><%= f.text_field :date_due, class: "datepicker" %>
+  <h5><strong>Time Due</strong></h5><%= f.time_field :time_due, placeholder: "Sarts at"%>
   <%= f.submit "Submit" %>
 <% end %>
 

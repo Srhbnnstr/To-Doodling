@@ -1,26 +1,35 @@
 class TodosController < ApplicationController
-  before_action :todo_params, only: [:update, :create]
+
   def index
-    @list = List.find_by_id(params[:list_id])
-    @todos = Todo.all
+    @todos = current_user.todos.where(:done => false)
+    @lists  = current_user.lists
+  end
+
+  def show
+    @todo = Todo.find(params[:id])
   end
 
   def new
     @todo = Todo.new
-    @list = List.find_by_id(params[:list_id])
+    @list = List.find_by_id(params[:id])
     render :new
   end
 
   def create
-    @todo = Todo.new(todo_params)
-    @list = List.find_by(params[:list_id])
+    @list = List.find_by_id(params[:list_id])
+    p"***************"
+    p @list
+    @todo = current_user.todos.new(todo_params)
+    @list.todos << @todo
+    @list.save
     @todo.save
-      if @list.todos.push(@todo)
+      if @todo.save
+      flash[:notice] = "Your task was created."
       redirect_to list_path(@list)
       else
       @todo.destroy
-      flash[:error] = "please try again"
-      redirect_to new_todo_path(@list)
+      flash[:error] = "There was an error creating your task."
+      redirect_to new_todo_path(@todo)
       end
   end
 
