@@ -1,21 +1,19 @@
 <div class="col-xs-offset-1 col-sm-4 col-md-4 col-lg-6">
   <div class="container">
-  <% if current_user %>
-      <h2><%= @list.list_title %></h2>
+    <% if current_user %>
+        <h2><%= @list.list_title %></h2>
+    </div>
   </div>
-</div>
-<br>
-  <div class="col-xs-12 col-xs-offset-3 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
-  <div class="todos container">
-  <% if @list.todos.empty? %>
-      <p>You haven't created any tasks yet.</p>
-      <% else %>
-      <% @todos.each_with_index do |todo, i| %>
-    <tr>
-        <td><%=  %></td>
-    </tr>
-    <% end %>
-<% end %>
+  <br>
+    <div class="col-xs-12 col-xs-offset-3 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+    <div class="todos container">
+    <% if @list.todos.empty? %>
+        <p>You haven't created any tasks yet.</p>
+            <% else %>
+        <h3><% @list.todos.each do |t| %></h3>
+        <p><%= "#{t.title}" %></p><hr>
+          <% end %>
+      <% end %>
       <%= button_to "Add Task", new_list_todo_path(@list), :method => "get", class: "btn btn-small btn-primary" %><br>
       <%= link_to "Edit List", edit_list_path(@list), :method => "get" %>
       <%= link_to "Delete List", (@list), data: {:confirm=>'Are you sure you want to delete this list?'}, :method => :delete %>
