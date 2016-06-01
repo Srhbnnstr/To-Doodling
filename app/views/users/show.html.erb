@@ -3,20 +3,17 @@
     <div class="col-md-4 user-container">
       <h3>Welcome, <%= @user.first_name %></h3>
       <hr>
-      <%= image_tag @user.photo, class: "img-circle", size: "340x340"%>
+      <%= image_tag @user.avatar, class: "img-circle", size: "340x340"%>
       <hr>
       <span><%= button_to "Edit Profile", edit_user_path, :method => "get", class: "btn btn-sm btn-default"%><%= button_to "My Lists", lists_path, :method => "get", class: "btn btn-sm btn-primary"%></span>
     </div>
     <div class="calendar col-md-8">
         <%= month_calendar todos: Todo.all do |date, todos| %>
-          <%= date %>
-
-          <% current_user.todos.each do |todo| %>
-            <div>
-              <%= todo.title %>
-            </div>
+        <%= date %>
+        <% todos.each do |todo| %>
+        <%= link_to todo.title, todo %>
         <% end %>
-      <% end %>
+        <% end %>
     <div class= "col-xs-offset-5 col-sm-10 col-sm-offset-5 col-md-10 col-md-offset-5 col-lg-10 col-lg-offset-5">
     <%= button_to "My To-Do's", todos_path, :method => "get", class: "btn btn-sm btn-primary" %>
   </div>

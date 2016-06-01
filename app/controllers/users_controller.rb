@@ -11,8 +11,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.photo == ""
-      @user.photo = "pencil-icon"
+    if @user.avatar == "nil"
+      @user.avatar = "pencil-icon"
     end
     @user.save
     login(@user)
