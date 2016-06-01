@@ -11,14 +11,14 @@
         <%= month_calendar todos: Todo.all do |date, todos| %>
           <%= date %>
 
-          <% todos.each do |todo| %>
+          <% current_user.todos.each do |todo| %>
             <div>
               <%= todo.title %>
             </div>
         <% end %>
       <% end %>
     <div class= "col-xs-offset-5 col-sm-10 col-sm-offset-5 col-md-10 col-md-offset-5 col-lg-10 col-lg-offset-5">
-    <%= button_to "My To-Do's", todo_path, :method => "get", class: "btn btn-sm btn-primary" %>
+    <%= button_to "My To-Do's", todos_path, :method => "get", class: "btn btn-sm btn-primary" %>
   </div>
   </div>
   </div>

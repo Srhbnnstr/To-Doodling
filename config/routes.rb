@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post "/sessions", to: "sessions#create", as: "create_session"
   get "/logout", to: "sessions#destroy", as: "logout"
 
+  get "/todos", to: "todos#index", as: "todos"
   resources :doodles
   resources :lists, shallow: true do
     resources :todos
