@@ -20,13 +20,14 @@
 
 </div>
 <div class= "col-xs-offset-5 col-sm-10 col-sm-offset-5 col-md-10 col-md-offset-5 col-lg-10 col-lg-offset-5">
-<%= button_to "Save Doodle", "/doodles", :method => "post", class: "btn btn-sm btn-primary" %>
+<%= button_to "Save Doodle", "/doodles", :method => "post", class: "btn btn-sm btn-primary", id: "save_button" %>
 </div>
+
 <script>
 $("#save_button").click(function() {
 
 // the canvg call that takes the svg xml and converts it to a canvas
-canvg('#canvas', $("#editor").html());
+canvg('svg', $("#canvas").html());
 
 // the canvas calls to output a png
 var canvas = document.getElementById("#canvas");

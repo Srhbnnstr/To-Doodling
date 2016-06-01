@@ -12,8 +12,9 @@
       <% else %>
       <% @todos.each_with_index do |todo, i| %>
     <tr>
-        <td><%= check_box_tag 'Done', todo.done, todo.done, :data => {:remote => true, :url => url_for( :action => 'done', :id => todo.id, :complete => todo.done ), :method => :put}, :class => 'input-large' %></td>
+        <td><%=  %></td>
     </tr>
+    <% end %>
 <% end %>
       <%= button_to "Add Task", new_list_todo_path(@list), :method => "get", class: "btn btn-small btn-primary" %><br>
       <%= link_to "Edit List", edit_list_path(@list), :method => "get" %>

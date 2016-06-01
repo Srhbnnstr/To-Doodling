@@ -16,4 +16,5 @@
 //= require json2.js
 //= require raphael.js
 //= require raphael.sketchpad.js
+//= require raphael.export.js
 //= require bootstrap-datepicker

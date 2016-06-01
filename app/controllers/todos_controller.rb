@@ -77,6 +77,6 @@ end
     private
 
   def todo_params
-    params.require(:todo).permit(:title, :date_due, :time_due)
+    params.require(:todo).permit(:title, :start_time, :end_time)
   end
 end
