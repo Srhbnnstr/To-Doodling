@@ -8,7 +8,7 @@
       <span><%= button_to "Edit Profile", edit_user_path, :method => "get", class: "btn btn-sm btn-default"%><%= button_to "My Lists", lists_path, :method => "get", class: "btn btn-sm btn-primary"%></span>
     </div>
     <div class="calendar col-md-8">
-    <%= month_calendar({events: @todos, attribute: :start_time}) do |date, todos| %>
+    <%= month_calendar({events: current_user.todos, attribute: :start_time}) do |date, todos| %>
               <%= date %>
 
               <% todos.each do |todo| %>

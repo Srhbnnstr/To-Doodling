@@ -1,4 +1,6 @@
 class TodosController < ApplicationController
+  before_action :get_id, only: [:update, :destroy]
+  before_action :todo_params, only: [:update, :create]
 
   def index
     @todos = current_user.todos.all
@@ -67,8 +69,8 @@ end
   end
 
   def destroy
-    @todo = Todo.find(params[:todo_id])
-      @list = List.find(params[:list_id])
+    @list = List.find_by_id(params[:id])
+    @todo = Todo.find_by_id(params[:id])
       @todo.destroy
       flash[:succes] = "Todo destroyed."
       redirect_to list_path(@list)
@@ -76,7 +78,14 @@ end
 
     private
 
+  def get_id
+    todo_id = params[:id]
+    Todo.find_by_id(todo_id)
+    list_id = params[:id]
+    List.find_by_id(list_id)
+  end
+
   def todo_params
-    params.require(:todo).permit(:title, :start_time, :end_time)
+    params.require(:todo).permit(:title, :start_time, :end_time, :done)
   end
 end
