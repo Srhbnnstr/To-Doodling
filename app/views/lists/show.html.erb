@@ -10,12 +10,11 @@
   <% if @list.todos.empty? %>
       <p>You haven't created any tasks yet.</p>
       <% else %>
-      <% @list.todos.each do |t| %>
-      <li>
-      <%= check_box_tag @todo %>
-      <%= "#{t.title}" %></p><p><%= "#{t.date_due}"%><%= "#{t.time_due}"%></li><hr>
-      <% end %>
-    <% end %>
+      <% @todos.each_with_index do |todo, i| %>
+    <tr>
+        <td><%= check_box_tag 'Done', todo.done, todo.done, :data => {:remote => true, :url => url_for( :action => 'done', :id => todo.id, :complete => todo.done ), :method => :put}, :class => 'input-large' %></td>
+    </tr>
+<% end %>
       <%= button_to "Add Task", new_list_todo_path(@list), :method => "get", class: "btn btn-small btn-primary" %><br>
       <%= link_to "Edit List", edit_list_path(@list), :method => "get" %>
       <%= link_to "Delete List", (@list), data: {:confirm=>'Are you sure you want to delete this list?'}, :method => :delete %>

@@ -5,11 +5,15 @@
 </div>
 <div class="col-xs-offset-3 col-sm-6 col-sm-offset-3 col-md-8 col-md-offset-3 col-lg-8 col-lg-offset-3" style="padding-left:0px">
   <div class="todos row">
-  <% current_user.todos.each do |t| %>
+    <% if current_user.todos.empty? %>
+        <p>You haven't created any tasks yet.</p>
+    <% else %>
+    <% current_user.todos.each do |t| %>
       <li>
         <%= check_box_tag @todo %>
         <%= h "#{t.title}" %>
       </li>
+      <% end %>
   <% end %>
 </ul>
   </div>

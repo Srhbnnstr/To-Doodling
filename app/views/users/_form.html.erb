@@ -4,6 +4,6 @@
   <%= f.input :email, placeholder: "email@email.com"%>
   <%= f.input :password, placeholder: "Password"%>
   <%= f.input :password_confirmation, placeholder: "Confirm Password", required: true %>
-  <h5><strong>Profile Photo</strong></h5><%= f.file_field :avatar, placeholder: "photo URL" %>
+  <h5><strong>Profile Photo</strong></h5><%= f.input :photo, placeholder: "photo URL" %>
   <%= f.button :submit, name:"Submit", value: "Submit" %>
 <% end %>

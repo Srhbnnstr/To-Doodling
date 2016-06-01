@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
   before_filter :set_time_zone
 
   include SessionsHelper
-  
+  include SimpleCalendar
+
   private
 
   def set_time_zone

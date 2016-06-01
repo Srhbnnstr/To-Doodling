@@ -1,9 +1,24 @@
 class TodosController < ApplicationController
 
   def index
-    @todos = current_user.todos.where(:done => false)
+    @todos = current_user.todos.all
     @lists  = current_user.lists
   end
+
+  def done
+  @todo = todo.find(params[:id])
+  p "inside complete"
+  p "complete = #{params[:done]}"
+  @todo.done =
+
+    if @todo.update_attributes(params[:todo])
+      p "inside update"
+      render :text => "success"
+    else
+      p "inside error"
+    end
+
+end
 
   def show
     @todo = Todo.find(params[:id])
