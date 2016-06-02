@@ -19,9 +19,8 @@ gem 'therubyracer', platforms: :ruby
 gem "simple_calendar", "~> 2.0"
 #erd generator
 gem "rails-erd"
-#O auth
-gem 'omniauth'
-gem 'omniauth-facebook', '1.4.0'
+#for deployment
+gem 'rails_12factor', group: :production
 #simple forms
 gem 'simple_form'
 # Use jquery as the JavaScript library
