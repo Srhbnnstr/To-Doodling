@@ -1,26 +1,25 @@
 class SessionsController < ApplicationController
-  require 'bcrypt'
 
   def new
-
+    @user = User.new
+    render :new
   end
 
   def create
-    @user = User.confirm(user_params) || User.from_omniauth(env["omniauth.auth"])
-    session[:user_id] = @user.id
+    @user = User.confirm(user_params)
     if @user
       login(@user)
-      flash[:notice] = "Welcome!"
+      flash[:notice] = "Successfully logged in."
       redirect_to @user
     else
       flash[:error] = "Incorrect email or password."
-      redirect_to new_session_path
+      redirect_to login_path
     end
   end
 
   def destroy
     session[:user_id] = nil
-    flash[:notice] = "You are now logged out."
+    flash[:notice] = "Successfully logged out."
     redirect_to root_path
   end
 

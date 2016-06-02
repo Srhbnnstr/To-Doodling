@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= jquery.browser.js
 //= require jquery_ujs
 //= require turbolinks
 //= require json2.js

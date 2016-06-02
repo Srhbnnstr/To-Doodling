@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :verify_authenticity_token
+  Date.beginning_of_week = :sunday
 
   def index
     @users = User.all
@@ -47,6 +48,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :location, :password, :photo)
+    params.require(:user).permit(:first_name, :last_name, :email, :location, :password, :photo, :name, :provider, :oauth_token, :uid, :oauth_expires_at)
   end
 end

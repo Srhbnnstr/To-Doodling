@@ -1,7 +1,4 @@
 class DoodlesController < ApplicationController
-  require 'json'
-
-
   def index
     @doodles = Doodle.all
   end
@@ -18,7 +15,13 @@ class DoodlesController < ApplicationController
     @doodle = Doodle.new(params[:doodle])
 
       if @doodle.save
-
+        respond_to do |format|
+          format.html {
+            flash[:notice] ="Successfully saved doodle."
+            render :text => "<html><body><script type='text/javascript' charset='utf-8'>window.parent.document.location.href = '" +
+                          doodle_path(@doodle) + "';</script></body></html>"
+        }
+      end
       else
       render :action => 'new'
       end
@@ -44,11 +47,4 @@ class DoodlesController < ApplicationController
     flash[:notice] = "sucessfully destroyed doodle"
     redirect_to doodles_path
   end
-
-
-private
-  def doodle_params
-    params.require(:doodle).permit(:image, :note, :user_id, :list_)
-  end
-
 end

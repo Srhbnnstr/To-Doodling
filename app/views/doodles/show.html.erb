@@ -1,8 +1,4 @@
-<div id="viewer">
-      <%- flash.each do |name, msg| -%>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
-      <%- end -%>
-</div>
+<div id="viewer"></div>
 
 <script type="text/javascript">
 	var strokes = [{
@@ -20,4 +16,7 @@
 		strokes: strokes,
 		editing: false
 	});
+
+  var json = viewer.json();
+
 </script>

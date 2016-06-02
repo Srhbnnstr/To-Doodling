@@ -1,14 +1,5 @@
   <div class="header">
 
-    <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=1773350696233185";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
     <div class="col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-1 col-lg-8 col-lg-offset-1" style="padding-left:0px">
       <div class="container-fluid">
       <h1>To-Doodling<%= image_tag("pencil-gif.gif", class: "img-responsive") %></h1>
@@ -20,7 +11,7 @@
         <% if current_user %>
           <%= link_to "Sign out", signout_path, id: "sign_out" %>
         <% else %>
-        <span><%= button_to "Sign Up", new_user_path, :method => "get", class: "btn btn-sm btn-primary", style:"background-color:#00b2a3" %><%= button_to "Login", new_session_path, :method => "get", class: "btn btn-sm btn-warning" %> <h4> or </h4><div class="fb-login-button" style="padding: 12px 0 0 11px" data-max-rows="1" data-size="large" data-auto-logout-link="false"></div> Log in with Facebook</span>
+        <span><%= button_to "Sign Up", new_user_path, :method => "get", class: "btn btn-sm btn-primary", style:"background-color:#00b2a3" %><%= button_to "Login", new_session_path, :method => "get", class: "btn btn-sm btn-warning" %>
         <% end %>
   </div>
   <hr>
