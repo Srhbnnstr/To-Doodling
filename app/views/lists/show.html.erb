@@ -13,7 +13,7 @@
             <% @list.todos.each do |t| %>
               <li>
                 <input type="checkbox" id="cbox1">
-                <label class="todoItem"><%= h "#{t.title}" %></label><%= link_to '', todo_path(@list, @todo), data: {:confirm => 'Are you sure you want to delete this task?'}, :method => :delete, class: "glyphicon glyphicon-trash" %><hr>
+                <label class="todoItem"><%= h "#{t.title}" %></label><hr>
               </li>
           <% end %>
       <% end %>

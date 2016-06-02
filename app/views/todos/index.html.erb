@@ -11,7 +11,7 @@
     <% current_user.todos.each do |t| %>
       <li>
         <input type="checkbox" id="cbox1">
-        <label class="todoItem"><%= h "#{t.title}" %></label><br><%= link_to '', todos_path(@todo), data: {:confirm => 'Are you sure you want to delete this task?'}, :method => :delete, class: "glyphicon glyphicon-trash" %><hr>
+        <label class="todoItem"><%= "#{t.title}" %></label><hr>
       </li>
       <% end %>
   <% end %>

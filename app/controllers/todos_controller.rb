@@ -19,8 +19,7 @@ class TodosController < ApplicationController
     else
       p "inside error"
     end
-
-end
+  end
 
   def show
     @todo = Todo.find(params[:id])
@@ -70,10 +69,10 @@ end
 
   def destroy
     @list = List.find_by_id(params[:id])
-    @todo = Todo.find_by_id(params[:id])
+    @todo = current_user.todos.find(params[:id])
       @todo.destroy
-      flash[:succes] = "Todo destroyed."
-      redirect_to list_path(@list)
+      redirect_to todos_path
+        flash[:alert] = "Task deleted"
   end
 
     private
