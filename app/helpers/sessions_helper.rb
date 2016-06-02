@@ -1,4 +1,5 @@
 module SessionsHelper
+
   def login(user)
     session[:user_id] = user.id
     @current_user = user
@@ -15,13 +16,7 @@ module SessionsHelper
   end
 
   def logout
-    @current_user = session[:id] = nil
+    @current_user = session[:user_id] = nil
   end
 
-  def verifyUser
-    if current_user != @user
-      flash["error"]="Not authorized to complete!"
-      redirect_to root_path
-    end
-  end
 end

@@ -11,6 +11,11 @@
 // about supported directives.
 //
 //= require jquery
+//= jquery.browser.js
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require json2.js
+//= require raphael.js
+//= require raphael.sketchpad.js
+//= require raphael.export.js
+//= require bootstrap-datepicker

@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
+  skip_before_action :verify_authenticity_token
+  Date.beginning_of_week = :sunday
+
   def index
     @users = User.all
+    @todos = Todo.all
   end
 
   def new
@@ -10,7 +14,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.photo == ""
-      @user.photo = " USER PHOTO HERE "
+      @user.photo = "pencil-icon"
     end
     @user.save
     login(@user)
@@ -19,6 +23,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_id(params[:id])
+    @todos = Todo.all
   end
 
   def edit

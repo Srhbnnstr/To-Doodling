@@ -13,20 +13,122 @@
  *= require_tree .
  *= require_self
  *= require simple_calendar
+ *= require bootstrap-datepicker
  */
 @import "bootstrap-sprockets"
 @import "bootstrap"
 
+$secondary-color: #B470EC
+$accent: #FFF958
+$salmon: #FF7A70
+$minty: #73C2A9
+$font1: #3a3a3a
 
-$primary-color: #593D81
-$primary-color-2: #D18C7E
-$font-color-1: #fff
+
+$small: "(max-width: 780px)"
+$tiny: "(max-width: 655px)"
+$tinier: "(max-width: 610px)"
+$mini: "(max-width: 545px)"
+$xsmall: "(max-width: 435px)"
 
 body
-  background-color: $primary-color
+  background-image: url('notebook.png') no-repeat center center
+  background-size: cover
 
 .simple-calendar
   background-color: #fff
   max-width: 800px
   height: auto
   margin-top: 30px
+  -webkit-box-shadow: -6px 18px 37px -6px rgba(66,65,66,1)
+  -moz-box-shadow: -6px 18px 37px -6px rgba(66,65,66,1)
+  box-shadow: -6px 18px 37px -6px rgba(66,65,66,1)
+
+.has-events
+  background-color: $salmon
+
+h1
+  font-family: 'Pacifico', cursive
+  font-size: 120px
+  width: 100%
+  margin-left: 20px
+  height: auto
+  margin-top: 100px
+  margin-bottom: 30px
+  @media #{$small}
+    text-align: left
+    font-size: 110px
+    margin-left: 0px
+    margin-bottom: 0px
+  @media #{$tiny}
+    font-size: 98px
+  @media #{$tinier}
+    font-size: 88px
+  @media #{$mini}
+    font-size: 70px
+  @media #{$xsmall}
+    font-size: 55px
+
+h2
+  font-family: 'Pacifico', cursive
+  text-align: center
+  display: inline-block
+
+h3
+  font-family: 'Permanent Marker', sans-serif
+
+p
+  font-family: 'Varela Round', sans-serif
+
+.img-responsive
+  display: inline-block
+  float: right
+  position: absolute
+  width: 100px
+  height: 100px
+  margin-bottom: 80px
+  @media #{$small}
+    display: inline-block
+    float: right
+    width: 10%
+    height: auto
+    padding-bottom: 80px
+    margin: auto
+
+.simple_form
+  float: left
+  text-align: center
+  width: 400px
+  height: auto
+  display: block
+  border: 2px solid $font1
+  border-radius: 25px
+  padding: 20px
+  margin-top: 40px
+  background-color: $minty
+  color: $font1
+  @media #{$small}
+    width: 80%
+    height: auto
+
+.simple_form .input-box
+  margin-bottom: 10px
+
+.simple_form input
+  margin-bottom: 10px
+  width: 100%
+  height: auto
+
+.simple_form input.button
+  margin-top: 30px
+  color: #5a5a5a
+  font-weight: bolder
+  border-radius: 50px
+
+.simple_form label
+  margin-top: 10px
+  display: block
+  padding-right: 30px
+
+button
+  margin: 0 20px 0 0

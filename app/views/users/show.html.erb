@@ -1,22 +1,25 @@
-<div class="container user-container">
+<div class="container">
   <div class="row">
-    <div class="col-md-4">
-      <h3>Welcome, <%= @user.first_name %></h3>
+    <div class="col-md-4 user-container">
+      <h3><%= @user.first_name %> <%= @user.last_name %></h3>
       <hr>
-      <%= image_tag @user.photo, class: "img-responsive img-circle", size: "340x340"%>
+      <%= image_tag @user.photo, class: "img-circle", size: "340x340"%>
       <hr>
-      <%= button_to "Edit Profile", edit_user_path, :method => "get", class: "btn btn-lg btn-primary" %>
+      <span><%= button_to "Edit Profile", edit_user_path, :method => "get", class: "btn btn-sm btn-default"%><%= button_to "My Lists", lists_path, :method => "get", class: "btn btn-sm btn-primary"%></span>
     </div>
-    <div class="col-md-8">
-        <%= month_calendar todos: @todos do |date, todos| %>
-          <%= date %>
+    <div class="calendar col-md-8">
+    <%= month_calendar({events: current_user.todos, attribute: :start_time}) do |date, todos| %>
+              <%= date %>
 
-          <% todos.each do |todo| %>
-            <div>
-              <%= todo.title %>
-            </div>
-        <% end %>
-      <% end %>
-      </div>
+              <% todos.each do |todo| %>
+                  <%= todo.title %>
+                </div>
+            <% end %>
+          <% end %>
+    <div class= "col-xs-offset-4 col-sm-10 col-sm-offset-4 col-md-10 col-md-offset-4 col-lg-10 col-lg-offset-4">
+    <%= button_to "My To-Do's", todos_path, :method => "get", class: "btn btn-sm btn-primary" %>
+    <%= button_to "My Doodles", doodles_path, :method => "get", class: "btn btn-sm btn-primary" %>
+  </div>
+  </div>
   </div>
 </div>

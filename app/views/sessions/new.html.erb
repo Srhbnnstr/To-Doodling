@@ -1,15 +1,14 @@
-<div class="loginPage">
-
-  <h1 class="loginText">Login</h1>
-
-  <%= form_for @user, url: "/sessions", method: "post" do |f| %>
-  <div>
-    <%= f.text_field :email, placeholder: "Email", class: "login form-control" %>
+<div class="col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-1 col-lg-8 col-lg-offset-1" style="padding-left:0px">
+  <div class="container-fluid">
+    <h1>Login<%= image_tag("pencil-gif.gif", class: "img-responsive") %></h1>
   </div>
-  <div>
-    <%= f.password_field :password, placeholder: "Password" , class: "login form-control"%>
-  </div>
-  <%= f.submit "Sign In", class:"loginText btn btn-primary" %>
-  <% end %>
-
 </div>
+      <div class="col-xs-offset-3 col-sm-10 col-sm-offset-4 col-md-10 col-md-offset-4 col-lg-10 col-lg-offset-4" style="padding-left:0px">
+        <div class="row">
+          <%= simple_form_for User.new, url: "/sessions", as: 'user' do |f| %>
+            <%= f.input :email, placeholder: "email@email.com"%>
+            <%= f.input :password, placeholder: "Password"%>
+            <%= f.button :submit, name:"Login", value: "Login" %>
+          <% end %>
+        </div>
+      </div>

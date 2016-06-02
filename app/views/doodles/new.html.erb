@@ -1,0 +1,102 @@
+<script type="text/javascript" src="http://gabelerner.github.io/canvg/rgbcolor.js"></script>
+<script type="text/javascript" src="http://gabelerner.github.io/canvg/StackBlur.js"></script>
+<script type="text/javascript" src="http://gabelerner.github.io/canvg/canvg.js"></script>
+
+<div class="container-fluid" id="canvaswrapper">
+  <h3>Choose a color from the palette and doodle something!</h3>
+<div id="canvaswrapper">
+    <div id="canvascolours">
+        <div data-colour="black"></div>
+        <div data-colour="red"></div>
+        <div data-colour="orange"></div>
+        <div data-colour="yellow"></div>
+        <div data-colour="green"></div>
+        <div data-colour="blue"></div>
+        <div data-colour="indigo"></div>
+        <div data-colour="violet"></div>
+        <div data-colour="white"></div>
+    </div>
+    <div id="canvas"></div>
+
+</div>
+<div class= "col-xs-offset-5 col-sm-10 col-sm-offset-5 col-md-10 col-md-offset-5 col-lg-10 col-lg-offset-5">
+<%= button_to "Save Doodle", "/doodles", :method => "post", class: "btn btn-sm btn-primary", id: "save_button" %>
+</div>
+
+<script>
+$("#save_button").click(function() {
+
+// the canvg call that takes the svg xml and converts it to a canvas
+canvg('svg', $("#canvas").html());
+
+// the canvas calls to output a png
+var canvas = document.getElementById("#canvas");
+var img = canvas.toDataURL("image/png");
+// do what you want with the base64, write to screen, post to server, etc...
+});
+</script>
+<script>
+var canvas = document.getElementById('canvas'),
+    paper = new Raphael(canvas, 500, 700),
+    colour = 'black',
+    mousedown = false,
+    width = 9,
+    lastX, lastY, path, pathString;
+
+$(canvas).mousedown(function (e) {
+    mousedown = true;
+
+    var x = e.offsetX,
+        y = e.offsetY;
+
+    pathString = 'M' + x + ' ' + y + 'l0 0';
+    path = paper.path(pathString);
+    path.attr({
+        'stroke': colour,
+        'stroke-linecap': 'round',
+        'stroke-linejoin': 'round',
+        'stroke-width': width
+    });
+
+    lastX = x;
+    lastY = y;
+});
+$(document).mouseup(function () {
+    mousedown = false;
+});
+
+$(canvas).mousemove(function (e) {
+    if (!mousedown) {
+        return;
+    }
+
+    var x = e.offsetX,
+        y = e.offsetY;
+
+    pathString += 'l' + (x - lastX) + ' ' + (y - lastY);
+    path.attr('path', pathString);
+
+    lastX = x;
+    lastY = y;
+});
+
+$(document).keydown(function (e) {
+    if (e.keyCode > 48 && e.keyCode < 58) {
+        width = e.keyCode - 48;
+    }
+});
+
+$('#canvascolours [data-colour]').each(function () {
+    var $this = $(this),
+        divColour = $this.data('colour');
+
+    // Change the background colour of the box
+    $this.css('background-color', divColour);
+
+    // Add the event listener
+    $this.click(function () {
+        colour = divColour;
+    });
+});
+
+</script>

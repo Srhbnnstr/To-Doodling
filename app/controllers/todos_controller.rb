@@ -1,29 +1,53 @@
 class TodosController < ApplicationController
+  before_action :get_id, only: [:update, :destroy]
+  before_action :todo_params, only: [:update, :create]
+
   def index
-    @todos = Todo.all
+    @todos = current_user.todos.all
+    @lists  = current_user.lists
   end
-  
+
+  def done
+  @todo = todo.find(params[:id])
+  p "inside complete"
+  p "complete = #{params[:done]}"
+  @todo.done =
+
+    if @todo.update_attributes(params[:todo])
+      p "inside update"
+      render :text => "success"
+    else
+      p "inside error"
+    end
+
+end
+
   def show
-    @todo = Todo.find_by(params[:id])
+    @todo = Todo.find(params[:id])
   end
 
   def new
-    @list = List.find_by_id(params[:list_id])
     @todo = Todo.new
+    @list = List.find_by_id(params[:id])
+    render :new
   end
 
   def create
-    @todo = Todo.new(todo_params)
-    @list = List.find(params[:list_id])
+    @list = List.find_by_id(params[:list_id])
+    p"***************"
+    p @list
+    @todo = current_user.todos.new(todo_params)
+    @list.todos << @todo
+    @list.save
     @todo.save
-    if @list.todos.push(@todo)
-      current_user.list.todo.push(@todo)
+      if @todo.save
+      flash[:notice] = "Your task was created."
       redirect_to list_path(@list)
-    else
+      else
       @todo.destroy
-        flash[:error] = "Something went wrong, please try again"
-        redirect_to new_todo_path(@todo)
-    end
+      flash[:error] = "There was an error creating your task."
+      redirect_to new_todo_path(@todo)
+      end
   end
 
   def edit
@@ -45,8 +69,8 @@ class TodosController < ApplicationController
   end
 
   def destroy
-    @todo = Todo.find(params[:todo_id])
-      @list = List.find(params[:list_id])
+    @list = List.find_by_id(params[:id])
+    @todo = Todo.find_by_id(params[:id])
       @todo.destroy
       flash[:succes] = "Todo destroyed."
       redirect_to list_path(@list)
@@ -54,7 +78,14 @@ class TodosController < ApplicationController
 
     private
 
+  def get_id
+    todo_id = params[:id]
+    Todo.find_by_id(todo_id)
+    list_id = params[:id]
+    List.find_by_id(list_id)
+  end
+
   def todo_params
-    params.require(:todo).permit(:title, :date_due, :time_due)
+    params.require(:todo).permit(:title, :start_time, :end_time, :done)
   end
 end

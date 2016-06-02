@@ -1,12 +1,17 @@
-<div class="jumbotron">
-  <div class="container">
-    <h1 class="display-3">To-Doodling</h1> <p>To-do or to doodle, you decide!</p>
+  <div class="header">
+
+    <div class="col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-1 col-lg-8 col-lg-offset-1" style="padding-left:0px">
+      <div class="container-fluid">
+      <h1>To-Doodling<%= image_tag("pencil-gif.gif", class: "img-responsive") %></h1>
+      </div>
+    </div>
+  </div>
     <hr>
-<% if current_user %>
-      <% else %>
-        <%= button_to "Sign Up", new_user_path, :method => "get", class: "btn btn-lg btn-primary" %>
-        <%= button_to "Login", new_session_path, :method => "get", class: "btn btn-lg btn-success" %>
-      <% end %>
-    </p>
-</div>
-</div>
+    <div class="col-xs-offset-2 col-sm-9 col-sm-offset-2 col-md-9 col-md-offset-2 col-lg-9 col-lg-offset-2">
+        <% if current_user %>
+          <%= link_to "Sign out", signout_path, id: "sign_out" %>
+        <% else %>
+        <span><%= button_to "Sign Up", new_user_path, :method => "get", class: "btn btn-sm btn-primary", style:"background-color:#00b2a3" %><%= button_to "Login", new_session_path, :method => "get", class: "btn btn-sm btn-warning" %>
+        <% end %>
+  </div>
+  <hr>
