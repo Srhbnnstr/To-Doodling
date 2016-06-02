@@ -9,7 +9,7 @@
     </div>
     <div class="calendar col-md-8">
     <%= month_calendar({events: current_user.todos, attribute: :start_time}) do |date, todos| %>
-              <%= date %>
+              <%= date.day %><br>
 
               <% todos.each do |todo| %>
                   <%= todo.title %>
