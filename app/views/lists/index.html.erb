@@ -4,7 +4,7 @@
   </div>
 </div>
 <br><br>
-<div class="col-xs-offset-1 col-sm-4 col-md-4 col-lg-6">
+<div class="col-sm-offset-1 col-md-offset-1 col-lg-6">
   <div class="lists container">
     <% if @lists.empty? %>
         <p>You haven't created any lists yet.</p>
@@ -14,6 +14,5 @@
       <% end %>
     <% end %>
     <%= button_to "Add List", new_list_path, :method => "get", class: "btn btn-small btn-primary" %>
-
   </div>
 </div>
