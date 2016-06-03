@@ -20,3 +20,10 @@
 //= require raphael.sketchpad.js
 //= require raphael.export.js
 //= require bootstrap-datepicker
+
+$(document).on('keyup keypress', 'form input[type="text"]', function(e) {
+  if(e.which == 13) {
+    e.preventDefault();
+    return false;
+  }
+});

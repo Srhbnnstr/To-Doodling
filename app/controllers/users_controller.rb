@@ -16,9 +16,14 @@ class UsersController < ApplicationController
     if @user.photo == ""
       @user.photo = "pencil-icon"
     end
-    @user.save
+    if @user.save
+    flash[:notice] = "Thanks for creating an account with To-Doodle, " + @user.first_name + "!"
     login(@user)
     redirect_to @user
+    else
+      flash[:error] = "Please fill in all required fields (marked with *)"
+      redirect_to new_user_path
+    end
   end
 
   def show
@@ -35,8 +40,10 @@ class UsersController < ApplicationController
     user_id = params[:id]
     user = User.find_by(id: user_id)
     if user.update(user_params)
+      flash[:notice] = "Your profile has been successfully updated!"
       redirect_to user_path(user)
     else
+      flash[:error] = "Please fill in all required fields (marked with *)"
       redirect_to edit_user_path(user)
     end
   end

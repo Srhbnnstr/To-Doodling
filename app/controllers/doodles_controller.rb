@@ -17,12 +17,13 @@ class DoodlesController < ApplicationController
       if @doodle.save
         respond_to do |format|
           format.html {
-            flash[:notice] ="Successfully saved doodle."
-            render :text => "<html><body><script type='text/javascript' charset='utf-8'>window.parent.document.location.href = '" +
+            flash[:notice] ="Nice Doodle!"
+            render :text => "<html><body><script type='text/javascript' charset='utf-8'>window.parent.document.location.href = '#viewer" +
                           doodle_path(@doodle) + "';</script></body></html>"
         }
       end
       else
+      flash[:error]="We're sorry, something went wrong. Please try again."
       render :action => 'new'
       end
   end

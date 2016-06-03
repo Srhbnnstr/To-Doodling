@@ -1,8 +1,8 @@
 <%= simple_form_for @user do |f| %>
-  <%= f.input :first_name, placeholder: "First Name"%>
-  <%= f.input :last_name, placeholder: "Last Name"%>
-  <%= f.input :email, placeholder: "email@email.com"%>
-  <%= f.input :password, placeholder: "Password"%>
+  <%= f.input :first_name, placeholder: "First Name", required: true%>
+  <%= f.input :last_name, placeholder: "Last Name", required: true%>
+  <%= f.input :email, placeholder: "email@email.com", required: true%>
+  <%= f.input :password, placeholder: "Password", required: true%>
   <%= f.input :password_confirmation, placeholder: "Confirm Password", required: true %>
   <%= f.input :photo, placeholder: "photo URL" %>
   <%= f.button :submit, name:"Submit", value: "Submit" %>

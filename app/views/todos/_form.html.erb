@@ -1,5 +1,5 @@
 <%= simple_form_for @todo, url: list_todos_path do |f| %>
-  <h5><strong>Task</strong></h5><%= f.text_field :title, placeholder: "Task" %>
+  <h5><strong>Task</strong></h5><%= f.text_field :title, placeholder: "Task", required: true %>
   <h5><strong>Date Due</strong></h5><%= f.date_field :start_time%>
   <h5><strong>Time Due</strong></h5><%= f.time_field :end_time, placeholder: "Sarts at"%>
   <%= f.submit "Submit" %>

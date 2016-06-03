@@ -7,20 +7,6 @@ class TodosController < ApplicationController
     @lists  = current_user.lists
   end
 
-  def done
-  @todo = todo.find(params[:id])
-  p "inside complete"
-  p "complete = #{params[:done]}"
-  @todo.done =
-
-    if @todo.update_attributes(params[:todo])
-      p "inside update"
-      render :text => "success"
-    else
-      p "inside error"
-    end
-  end
-
   def show
     @todo = Todo.find(params[:id])
   end
@@ -33,14 +19,13 @@ class TodosController < ApplicationController
 
   def create
     @list = List.find_by_id(params[:list_id])
-    p"***************"
     p @list
     @todo = current_user.todos.new(todo_params)
     @list.todos << @todo
     @list.save
     @todo.save
       if @todo.save
-      flash[:notice] = "Your task was created."
+      flash[:notice] = "Your task was created!"
       redirect_to list_path(@list)
       else
       @todo.destroy
@@ -58,7 +43,7 @@ class TodosController < ApplicationController
     if @user.list.todo == current_user
       @list = List.find(params[:list_id])
       if @todo.update(todo_params)
-        flash[:success] = "Success!"
+        flash[:success] = "Successfully updated!"
         redirect_to list_path(@list)
       else
         flash[:error] = "Error!"

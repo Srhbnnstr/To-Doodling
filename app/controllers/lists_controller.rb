@@ -22,8 +22,10 @@ class ListsController < ApplicationController
     @list = List.new(list_params)
     @list.user = current_user
     if @list.save
+      flash[:notice] = "Your list was created!"
       redirect_to @list
     else
+      flash[:error] = "Please fill in all required fields (marked with *)"
       render new_list_path
     end
   end
