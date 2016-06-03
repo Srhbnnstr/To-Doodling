@@ -2,7 +2,7 @@
 
     <div class="col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-1 col-lg-8 col-lg-offset-1" style="padding-left:0px">
       <div class="container-fluid">
-      <h1>To-Doodling<%= image_tag("pencil-gif.gif", class: "img-responsive") %></h1>
+      <h1 class="mainHeader">To-Doodling<%= image_tag("pencil-gif.gif", class: "pencil img-responsive") %></h1>
       </div>
     </div>
   </div>
@@ -12,41 +12,38 @@
         <% else %>
         <span><%= button_to "Sign Up", new_user_path, :method => "get", class: "btn btn-sm btn-primary", style:"background-color:#00b2a3" %><%= button_to "Login", new_session_path, :method => "get", class: "btn btn-sm btn-warning" %>
         <% end %>
+    <hr style="border: 1px solid #3a3a3a">
   </div>
-  <hr>
 
-<div class="features">
 
-  <div class="row featurette">
-    <div class="col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-1 col-lg-8 col-lg-offset-1" style="padding-left:0px">
+<div class="col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-1 col-lg-8 col-lg-offset-1" style="padding-left:0px">
+<div class="container-fluid">
+
+  <div class="features container">
       <p class="lead">Keep track of your tasks, all in one place.</p>
-    </div>
-    <div class="col-md-5">
-      <%= image_tag "party1.jpg", class:"featurette-image img-responsive center-block" %>
-    </div>
+      <div class="image">
+        <%= image_tag "listImg.png", class:"image", size: "500x300" %>
+      </div>
   </div>
 
-  <hr class="featurette-divider">
+  <hr class="divider">
 
-  <div class="row featurette">
-    <div class="col-md-7 col-md-push-5">
+  <div class="features container">
       <p class="lead">Like to doodle? You can create those too!</p>
-    </div>
-    <div class="col-md-5 col-md-pull-7">
-      <%= image_tag "party2.jpg", class:"featurette-image img-responsive center-block" %>
-    </div>
+  <div class="image">
+      <%= image_tag "kittyImg.png", class:"image", size: "500x300" %>
+  </div>
   </div>
 
-  <hr class="featurette-divider">
+  <hr class="divider">
 
-  <div class="row featurette">
-    <div class="col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-1 col-lg-8 col-lg-offset-1" style="padding-left:0px">
-      <p class="lead">The handy custom calendar puts all of your tasks to view to keep you on track.</p>
-    </div>
-    <div class="col-md-5">
-      <%= image_tag "party3.jpg", class:"featurette-image img-responsive center-block" %>
-    </div>
+  <div class="features container">
+      <p class="lead">Your own custom calendar puts all of your tasks to view to keep you on track.</p>
+  <div class="image">
+      <%= image_tag "userProfile.png", class:"image", size: "500x300" %>
+  </div>
   </div>
 
-  <hr class="featurette-divider">
+  <hr class="divider">
+</div>
 </div>
