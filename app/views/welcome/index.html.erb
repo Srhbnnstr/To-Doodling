@@ -9,9 +9,44 @@
     <hr>
     <div class="col-xs-offset-2 col-sm-9 col-sm-offset-2 col-md-9 col-md-offset-2 col-lg-9 col-lg-offset-2">
         <% if current_user %>
-          <%= link_to "Sign out", signout_path, id: "sign_out" %>
         <% else %>
         <span><%= button_to "Sign Up", new_user_path, :method => "get", class: "btn btn-sm btn-primary", style:"background-color:#00b2a3" %><%= button_to "Login", new_session_path, :method => "get", class: "btn btn-sm btn-warning" %>
         <% end %>
   </div>
   <hr>
+
+<div class="features">
+
+  <div class="row featurette">
+    <div class="col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-1 col-lg-8 col-lg-offset-1" style="padding-left:0px">
+      <p class="lead">Keep track of your tasks, all in one place.</p>
+    </div>
+    <div class="col-md-5">
+      <%= image_tag "party1.jpg", class:"featurette-image img-responsive center-block" %>
+    </div>
+  </div>
+
+  <hr class="featurette-divider">
+
+  <div class="row featurette">
+    <div class="col-md-7 col-md-push-5">
+      <p class="lead">Like to doodle? You can create those too!</p>
+    </div>
+    <div class="col-md-5 col-md-pull-7">
+      <%= image_tag "party2.jpg", class:"featurette-image img-responsive center-block" %>
+    </div>
+  </div>
+
+  <hr class="featurette-divider">
+
+  <div class="row featurette">
+    <div class="col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-1 col-lg-8 col-lg-offset-1" style="padding-left:0px">
+      <p class="lead">The handy custom calendar puts all of your tasks to view to keep you on track.</p>
+    </div>
+    <div class="col-md-5">
+      <%= image_tag "party3.jpg", class:"featurette-image img-responsive center-block" %>
+    </div>
+  </div>
+
+  <hr class="featurette-divider">
+</div>
