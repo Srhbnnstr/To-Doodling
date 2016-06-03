@@ -13,19 +13,13 @@ class DoodlesController < ApplicationController
 
   def create
     @doodle = Doodle.new(params[:doodle])
-
-      if @doodle.save
-        respond_to do |format|
-          format.html {
-            flash[:notice] ="Nice Doodle!"
-            render :text => "<html><body><script type='text/javascript' charset='utf-8'>window.parent.document.location.href = '#viewer" +
-                          doodle_path(@doodle) + "';</script></body></html>"
-        }
-      end
-      else
+    if @doodle.save
+      flash[:notice]="Nice doodle!"
+      redirect_to @doodle
+    else
       flash[:error]="We're sorry, something went wrong. Please try again."
       render :action => 'new'
-      end
+    end
   end
 
   def edit
@@ -47,5 +41,10 @@ class DoodlesController < ApplicationController
     @doodle.destroy
     flash[:notice] = "sucessfully destroyed doodle"
     redirect_to doodles_path
+  end
+
+private
+  def doodle_params
+    params.require(:doodle).permit(:image, :note)
   end
 end
